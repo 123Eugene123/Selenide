@@ -25,7 +25,7 @@ public class DebitCardTest {
     }
 
     @Test
-    public void shouldFillValidDataWithHyphen() {gg
+    public void shouldFillValidDataWithHyphen() {
         SelenideElement form = $("form");
         form.$("[data-test-id=name] input").setValue("Рогов-Василий");
     }
