@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class DebitCardTest {
     @BeforeEach
-    public void InitialUrl() {
+    public void initialUrl() {
         open("http://localhost:9999");
     }
 
@@ -28,6 +28,10 @@ public class DebitCardTest {
     public void shouldFillValidDataWithHyphen() {
         SelenideElement form = $("form");
         form.$("[data-test-id=name] input").setValue("Рогов-Василий");
+        form.$("[data-test-id=phone] input").setValue("+79990009988");
+        form.$("[data-test-id=agreement]").click();
+        form.$(".button__text").click();
+        $("[data-test-id=order-success]").shouldHave(Condition.exactText(" Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время."));
     }
     @Test
     public void shouldFillFieldWrongName() {
